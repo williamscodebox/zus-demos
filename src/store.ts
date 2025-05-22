@@ -1,14 +1,28 @@
 import { create } from "zustand";
 
-type CounterStore = {
-  count: number;
-  increment: () => void;
-  decrement: () => void;
-};
+interface Recipe {
+  id: number;
+  name: string;
+  ingredients: string[];
+  instructions: string;
+}
 
-export const useCounter = create<CounterStore>((set) => ({
-  count: 0,
+interface RecipeStore {
+  recipes: Recipe[];
+  addRecipe: (recipe: Recipe) => void;
+  removeRecipe: (id: number) => void;
+}
 
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
+const useStore = create<RecipeStore>((set) => ({
+  recipes: [],
+  addRecipe: (recipe) =>
+    set((state) => ({
+      recipes: [...state.recipes, recipe],
+    })),
+  removeRecipe: (id) =>
+    set((state) => ({
+      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+    })),
 }));
+
+export default useStore;
