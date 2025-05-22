@@ -1,11 +1,5 @@
-import ExpenseTracker from "./components/ExpenseTracker";
-
 function App() {
-  return (
-    <div>
-      <ExpenseTracker />
-    </div>
-  );
+  return <div>App</div>;
 }
 
 export default App;
