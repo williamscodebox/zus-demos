@@ -1,27 +1,26 @@
 import { create } from "zustand";
 
-interface Recipe {
+interface Expense {
   id: number;
-  name: string;
-  ingredients: string[];
-  instructions: string;
+  description: string;
+  amount: number;
 }
 
-interface RecipeStore {
-  recipes: Recipe[];
-  addRecipe: (recipe: Recipe) => void;
-  removeRecipe: (id: number) => void;
+interface ExpenseStore {
+  expenses: Expense[];
+  addExpense: (expense: Expense) => void;
+  removeExpense: (id: number) => void;
 }
 
-const useStore = create<RecipeStore>((set) => ({
-  recipes: [],
-  addRecipe: (recipe) =>
+const useStore = create<ExpenseStore>((set) => ({
+  expenses: [],
+  addExpense: (expense) =>
     set((state) => ({
-      recipes: [...state.recipes, recipe],
+      expenses: [...state.expenses, expense],
     })),
-  removeRecipe: (id) =>
+  removeExpense: (id) =>
     set((state) => ({
-      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+      expenses: state.expenses.filter((expense) => expense.id !== id),
     })),
 }));
 

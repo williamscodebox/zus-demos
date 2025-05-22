@@ -1,9 +1,9 @@
-import RecipeApp from "./components/RecipeApp";
+import ExpenseTracker from "./components/ExpenseTracker";
 
 function App() {
   return (
     <div>
-      <RecipeApp />
+      <ExpenseTracker />
     </div>
   );
 }
