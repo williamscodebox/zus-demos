@@ -12,6 +12,7 @@ import useFetch from "./hooks/useFetch";
 import CardFactory from "./components/Factory/shared/CardFactory";
 import Card from "./components/compound/Card";
 import MouseTracker from "./components/MouseTracker";
+import Users from "./components/Users";
 
 const MyComponentWithLoading = withLoading(DataComponent);
 const TodoListWrapper = printProps(Test);
@@ -49,7 +50,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="m-5">
+      <div className="mb-5 border-2 border-blue-500 p-5 w-[20%]">
+        <Users />
+      </div>
       <MouseTracker
         render={(position: any) => (
           <p>
