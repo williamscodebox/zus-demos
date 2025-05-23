@@ -10,6 +10,7 @@ import withAccessControl from "./utils/withAccessControl";
 import NotAuthorized from "./components/NotAuthorized";
 import useFetch from "./hooks/useFetch";
 import CardFactory from "./components/Factory/shared/CardFactory";
+import Card from "./components/compound/Card";
 
 const MyComponentWithLoading = withLoading(DataComponent);
 const TodoListWrapper = printProps(Test);
@@ -48,6 +49,11 @@ function App() {
 
   return (
     <div>
+      <Card>
+        <Card.Title>Something Cool</Card.Title>
+        <Card.Content>Amazing Stuff</Card.Content>
+        <Card.Footer>And the end</Card.Footer>
+      </Card>
       <TodoListWrapper one={1} two={"hello"} />
       <div>
         <MyComponentWithLoading isLoading={isLoading} data={data2} />
