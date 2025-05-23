@@ -11,6 +11,7 @@ import NotAuthorized from "./components/NotAuthorized";
 import useFetch from "./hooks/useFetch";
 import CardFactory from "./components/Factory/shared/CardFactory";
 import Card from "./components/compound/Card";
+import MouseTracker from "./components/MouseTracker";
 
 const MyComponentWithLoading = withLoading(DataComponent);
 const TodoListWrapper = printProps(Test);
@@ -49,6 +50,13 @@ function App() {
 
   return (
     <div>
+      <MouseTracker
+        render={(position: any) => (
+          <p>
+            Mouse is at ({position.x}, {position.y})
+          </p>
+        )}
+      />
       <Card>
         <Card.Title>Something Cool</Card.Title>
         <Card.Content>Amazing Stuff</Card.Content>
