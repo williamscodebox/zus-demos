@@ -9,6 +9,7 @@ import Authorized from "./components/Authorized";
 import withAccessControl from "./utils/withAccessControl";
 import NotAuthorized from "./components/NotAuthorized";
 import useFetch from "./hooks/useFetch";
+import CardFactory from "./components/Factory/shared/CardFactory";
 
 const MyComponentWithLoading = withLoading(DataComponent);
 const TodoListWrapper = printProps(Test);
@@ -21,6 +22,22 @@ function App() {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [data2, setData] = useState("");
+
+  const imageCardData = {
+    src: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=3903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Placeholder Image",
+  };
+
+  const textCardData = {
+    text: "This is a simple text card.",
+  };
+
+  const profileCardData = {
+    name: "John Doe",
+    bio: "A software engineer with a passion for React.",
+    avatar:
+      "https://images.unsplash.com/photo-1487349703519-90c8e4f426a7?q=80&w=3853&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,6 +72,15 @@ function App() {
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+      </div>
+      <div>
+        <h1>Factory Design Pattern in React</h1>
+        <div className="flex flex-wrap">
+          {/* Use the factory function to render different types of cards */}
+          <CardFactory type="image" data={imageCardData} />
+          <CardFactory type="text" data={textCardData} />
+          <CardFactory type="profile" data={profileCardData} />
+        </div>
       </div>
     </div>
   );
